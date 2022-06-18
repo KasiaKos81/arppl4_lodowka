@@ -4,8 +4,8 @@ public class Skladnik {
 
     private String nazwa;
     IloscSkladnika iloscS;
-    private final double limitOstrzezenie;
-    private final double limitKrytyczny;
+    private double limitOstrzezenie;
+    private double limitKrytyczny;
 
     public Skladnik(String nazwa, IloscSkladnika ilosc, double limitOstrzezenie, double limitKrytyczny) {
         this.nazwa = nazwa;

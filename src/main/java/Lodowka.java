@@ -12,7 +12,7 @@ public class Lodowka {
     public List<Skladnik> zwrocSkladnikiKtorychJestMalo(){
         List<Skladnik> listaSkladnikowKtorychJestMalo = new ArrayList<>();
         for (Skladnik skladnik : mapaSkladniki.values()) {
-            if(skladnik.getLimitOstrzezenie() <= 3.0){
+            if(skladnik.getLimitOstrzezenie() >= skladnik.getIloscS().getIlosc()){
                 listaSkladnikowKtorychJestMalo.add(skladnik);
             }
         } return listaSkladnikowKtorychJestMalo;
@@ -32,8 +32,29 @@ public class Lodowka {
         }
         Skladnik skladnik  = mapaSkladniki.get(nazwa);
         skladnik.getIloscS().setIlosc((skladnik.getIloscS().getIlosc()) + ilosc);
-
+    }
+    public void zmniejszIloscSkladnik(String nazwa, double ilosc){
+        if(!mapaSkladniki.containsKey(nazwa)){
+            System.out.println("Nie ma takiego składnika");
+            return;
+        }
+        double roznicaStanuIlosci = mapaSkladniki.get(nazwa).getIloscS().getIlosc() - ilosc;
+        if (roznicaStanuIlosci < 0){
+            System.out.println("za mało produktu");
+            return;
+        }
+        Skladnik skladnik = mapaSkladniki.get(nazwa);
+        skladnik.getIloscS().setIlosc((skladnik.getIloscS().getIlosc()) - ilosc);
     }
 
-
+    public Optional<IloscSkladnika> zwrocStanSkladnika(String nazwa){
+        if(mapaSkladniki.containsKey(nazwa)){
+            System.out.println("Jest taki skladnik w lodowce: " + nazwa);
+            return Optional.of(mapaSkladniki.get(nazwa).getIloscS());
+        } else {
+            System.err.println("doopa, nie ma skladnika");
+            return Optional.empty();
+        }
     }
+
+}
