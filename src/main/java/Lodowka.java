@@ -4,9 +4,9 @@ public class Lodowka {
 
     private Map<String, Skladnik> mapaSkladniki = new HashMap<>();
 
-    public void dodajSkladnik(String nazwa, IloscSkladnika ilosc, double limitOstrzezenie, double limitKrytyczny) {
+    public void dodajSkladnik(String nazwa, Jednostka jednostka, double limitOstrzezenie, double limitKrytyczny) {
         if (!mapaSkladniki.containsKey(nazwa)) {
-            mapaSkladniki.put(nazwa, new Skladnik(nazwa, ilosc, limitOstrzezenie, limitKrytyczny));
+            mapaSkladniki.put(nazwa, new Skladnik(nazwa, new IloscSkladnika(0.0, jednostka), limitOstrzezenie, limitKrytyczny));
         }
     }
     public List<Skladnik> zwrocSkladnikiKtorychJestMalo(){
@@ -20,7 +20,7 @@ public class Lodowka {
     public List<Skladnik> zwrocSkladnikiKtorychJestWCholereMalo(){
         List<Skladnik> listaSkladnikowKtorychJestWCholereMalo = new ArrayList<>();
         for (Skladnik skladnik : mapaSkladniki.values()) {
-            if(skladnik.getLimitKrytyczny() <= 2.0){
+            if(skladnik.getLimitKrytyczny() >= skladnik.getIloscS().getIlosc()){
                 listaSkladnikowKtorychJestWCholereMalo.add(skladnik);
             }
         } return listaSkladnikowKtorychJestWCholereMalo;
@@ -31,7 +31,7 @@ public class Lodowka {
             return;
         }
         Skladnik skladnik  = mapaSkladniki.get(nazwa);
-        skladnik.setIlosc((skladnik.getIlosc()) + ilosc);
+        skladnik.getIloscS().setIlosc((skladnik.getIloscS().getIlosc()) + ilosc);
 
     }
 

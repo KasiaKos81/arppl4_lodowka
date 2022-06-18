@@ -3,15 +3,15 @@ import java.util.Objects;
 public class Skladnik {
 
     private String nazwa;
-    IloscSkladnika ilosc;
+    IloscSkladnika iloscS;
     private final double limitOstrzezenie;
     private final double limitKrytyczny;
 
     public Skladnik(String nazwa, IloscSkladnika ilosc, double limitOstrzezenie, double limitKrytyczny) {
         this.nazwa = nazwa;
-       this.ilosc = ilosc;
-        this.limitOstrzezenie = 3.0;
-        this.limitKrytyczny = 2.0;
+       this.iloscS = ilosc;
+        this.limitOstrzezenie = limitOstrzezenie;
+        this.limitKrytyczny = limitKrytyczny;
     }
 
     public String getNazwa() {
@@ -22,12 +22,12 @@ public class Skladnik {
         this.nazwa = nazwa;
     }
 
-    public IloscSkladnika getIlosc() {
-        return ilosc;
+    public IloscSkladnika getIloscS() {
+        return iloscS;
     }
 
-    public void setIlosc(IloscSkladnika ilosc) {
-        this.ilosc = ilosc;
+    public void setIloscS(IloscSkladnika iloscS) {
+        this.iloscS = iloscS;
     }
 
     public double getLimitOstrzezenie() {
@@ -43,19 +43,19 @@ public class Skladnik {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Skladnik skladnik = (Skladnik) o;
-        return Double.compare(skladnik.limitOstrzezenie, limitOstrzezenie) == 0 && Double.compare(skladnik.limitKrytyczny, limitKrytyczny) == 0 && Objects.equals(nazwa, skladnik.nazwa) && Objects.equals(ilosc, skladnik.ilosc);
+        return Double.compare(skladnik.limitOstrzezenie, limitOstrzezenie) == 0 && Double.compare(skladnik.limitKrytyczny, limitKrytyczny) == 0 && Objects.equals(nazwa, skladnik.nazwa) && Objects.equals(iloscS, skladnik.iloscS);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nazwa, ilosc, limitOstrzezenie, limitKrytyczny);
+        return Objects.hash(nazwa, iloscS, limitOstrzezenie, limitKrytyczny);
     }
 
     @Override
     public String toString() {
         return "Skladnik{" +
                 "nazwa='" + nazwa + '\'' +
-                ", ilosc=" + ilosc +
+                ", ilosc=" + iloscS +
                 ", limitOstrzezenie=" + limitOstrzezenie +
                 ", limitKrytyczny=" + limitKrytyczny +
                 '}';
