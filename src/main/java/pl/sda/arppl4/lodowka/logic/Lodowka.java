@@ -16,6 +16,9 @@ public class Lodowka {
             mapaSkladniki.put(nazwa, new Skladnik(nazwa, new IloscSkladnika(0.0, jednostka), limitOstrzezenie, limitKrytyczny));
         }
     }
+    public List<Skladnik> zwrocListeSkladnikow(){
+        return new ArrayList<>(mapaSkladniki.values());
+    }
     public List<Skladnik> zwrocSkladnikiKtorychJestMalo(){
         List<Skladnik> listaSkladnikowKtorychJestMalo = new ArrayList<>();
         for (Skladnik skladnik : mapaSkladniki.values()) {
