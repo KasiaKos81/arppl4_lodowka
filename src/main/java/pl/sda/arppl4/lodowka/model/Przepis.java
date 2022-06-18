@@ -1,3 +1,5 @@
+package pl.sda.arppl4.lodowka.model;
+
 import java.util.Set;
 
 public class Przepis {

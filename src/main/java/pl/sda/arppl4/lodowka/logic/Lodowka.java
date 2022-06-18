@@ -1,3 +1,10 @@
+package pl.sda.arppl4.lodowka.logic;
+
+import pl.sda.arppl4.lodowka.exception.BrakSkladnikaException;
+import pl.sda.arppl4.lodowka.model.IloscSkladnika;
+import pl.sda.arppl4.lodowka.model.Jednostka;
+import pl.sda.arppl4.lodowka.model.Skladnik;
+
 import java.util.*;
 
 public class Lodowka {
@@ -27,16 +34,15 @@ public class Lodowka {
     }
     public void zwiekszIloscSkladnika(String nazwa, double ilosc){
         if(!mapaSkladniki.containsKey(nazwa)){
-            System.out.println("Nie ma takiego składnika");
-            return;
+            throw new RuntimeException("nie ma składnika exception");
         }
         Skladnik skladnik  = mapaSkladniki.get(nazwa);
         skladnik.getIloscS().setIlosc((skladnik.getIloscS().getIlosc()) + ilosc);
     }
     public void zmniejszIloscSkladnik(String nazwa, double ilosc){
         if(!mapaSkladniki.containsKey(nazwa)){
-            System.out.println("Nie ma takiego składnika");
-            return;
+           throw new BrakSkladnikaException("nie ma składnika");
+
         }
         double roznicaStanuIlosci = mapaSkladniki.get(nazwa).getIloscS().getIlosc() - ilosc;
         if (roznicaStanuIlosci < 0){
@@ -55,6 +61,12 @@ public class Lodowka {
             System.err.println("doopa, nie ma skladnika");
             return Optional.empty();
         }
+    }
+    public void zwmienLimitKrytyczny(String nazwa, double nowaIlosc){
+        if(!mapaSkladniki.containsKey(nazwa)){
+
+        }
+
     }
 
 }

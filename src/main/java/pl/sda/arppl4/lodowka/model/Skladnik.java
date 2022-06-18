@@ -1,3 +1,5 @@
+package pl.sda.arppl4.lodowka.model;
+
 import java.util.Objects;
 
 public class Skladnik {
@@ -53,7 +55,7 @@ public class Skladnik {
 
     @Override
     public String toString() {
-        return "Skladnik{" +
+        return "pl.sda.arppl4.lodowka.model.Skladnik{" +
                 "nazwa='" + nazwa + '\'' +
                 ", ilosc=" + iloscS +
                 ", limitOstrzezenie=" + limitOstrzezenie +

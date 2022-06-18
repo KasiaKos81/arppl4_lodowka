@@ -1,3 +1,5 @@
+package pl.sda.arppl4.lodowka.model;
+
 public class IloscSkladnika {
 
     private double ilosc;
@@ -26,7 +28,7 @@ public class IloscSkladnika {
 
     @Override
     public String toString() {
-        return "IloscSkladnika{" +
+        return "pl.sda.arppl4.lodowka.model.IloscSkladnika{" +
                 "ilosc=" + ilosc +
                 ", jednostka=" + jednostka +
                 '}';
