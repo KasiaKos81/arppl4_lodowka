@@ -13,7 +13,7 @@ public class LodowkaTesty {
 
     @Test
     public void test_mozliweJestDodawanieSkladnika() {
-        Skladnik testowanySkladnik = new Skladnik("Jablko", new IloscSkladnika(6.0, Jednostka.SZTUKA) , 5.0, 3.0);
+        Skladnik testowanySkladnik = new Skladnik("Jablko", new IloscSkladnika(6.0, Jednostka.SZTUKA), 5.0, 3.0);
         Lodowka lodowka = new Lodowka();
         lodowka.dodajSkladnik(testowanySkladnik.getNazwa(), testowanySkladnik.getIloscS().getJednostka(), testowanySkladnik.getLimitOstrzezenie(), testowanySkladnik.getLimitKrytyczny());
         List<Skladnik> wynikZwroconaLista = lodowka.zwrocListeSkladnikow();

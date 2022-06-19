@@ -1,5 +1,10 @@
 package pl.sda.arppl4.lodowka.model;
 
+import lombok.Data;
+
+import java.util.Objects;
+@Data
+
 public class IloscSkladnika {
 
     private double ilosc;
@@ -26,11 +31,7 @@ public class IloscSkladnika {
         this.jednostka = jednostka;
     }
 
-    @Override
-    public String toString() {
-        return "pl.sda.arppl4.lodowka.model.IloscSkladnika{" +
-                "ilosc=" + ilosc +
-                ", jednostka=" + jednostka +
-                '}';
-    }
+
+
+
 }

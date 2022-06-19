@@ -40,6 +40,14 @@ public class Skladnik {
         return limitKrytyczny;
     }
 
+    public void setLimitOstrzezenie(double limitOstrzezenie) {
+        this.limitOstrzezenie = limitOstrzezenie;
+    }
+
+    public void setLimitKrytyczny(double limitKrytyczny) {
+        this.limitKrytyczny = limitKrytyczny;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

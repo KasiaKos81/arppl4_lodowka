@@ -67,9 +67,10 @@ public class Lodowka {
     }
     public void zwmienLimitKrytyczny(String nazwa, double nowaIlosc){
         if(!mapaSkladniki.containsKey(nazwa)){
-
+            throw new BrakSkladnikaException("nie ma składnika");
         }
-
+        Skladnik skladnik = mapaSkladniki.get(nazwa);
+        skladnik.setLimitKrytyczny((skladnik.getLimitKrytyczny()) + nowaIlosc);
     }
 
 }
