@@ -36,6 +36,17 @@ public class LodowkaTesty {
         Assert.assertTrue("lista zawiera składnik masło", wynikLista.contains(testowanySkladnik2));
         Assert.assertTrue("lista zawiera składnik masło", wynikLista.contains(testowanySkladnik3));
 
+    }
+    @Test
+    public void test_nieDzialaDodawanieSkladnikowOTejSamejNazwie(){
+        Lodowka lodowka = new Lodowka();
+        Skladnik pizdrykiWMasle = new Skladnik("pizdrykiWMasle", new IloscSkladnika(0.0, Jednostka.SZTUKA), 2.0, 1.0);
+        Skladnik pizdrykiWMasle2 = new Skladnik("pizdrykiWMasle", new IloscSkladnika(0.0, Jednostka.GRAM), 2.0, 1.0);
+        lodowka.dodajSkladnik(pizdrykiWMasle.getNazwa(), pizdrykiWMasle.getIloscS().getJednostka(), pizdrykiWMasle.getLimitOstrzezenie(), pizdrykiWMasle.getLimitKrytyczny());
+        lodowka.dodajSkladnik(pizdrykiWMasle2.getNazwa(), pizdrykiWMasle2.getIloscS().getJednostka(), pizdrykiWMasle2.getLimitOstrzezenie(), pizdrykiWMasle2.getLimitKrytyczny());
+        List<Skladnik> listaDruga = lodowka.zwrocListeSkladnikow();
+        Assert.assertEquals("lista powinna zawierac skladnik", 1, listaDruga.size());
+        Assert.assertTrue("lista powinna nie zawierac drugiego składnika", listaDruga.contains(pizdrykiWMasle2));
 
 
     }
