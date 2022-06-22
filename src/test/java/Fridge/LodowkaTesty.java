@@ -49,5 +49,20 @@ public class LodowkaTesty {
         Assert.assertFalse("lista powinna nie zawierac drugiego składnika", listaDruga.contains(pizdrykiWMasle2));
 
     }
+    @Test
+    public void test_PoDodaniuSkładnikaOIstniejącejNazwieNieNadpisujemyStaregoSkładnika(){
+        Lodowka lodowka = new Lodowka();
+        Skladnik czeresnie = new Skladnik("czeresnie", new IloscSkladnika(0.0, Jednostka.GRAM), 500, 300);
+        lodowka.dodajSkladnik(czeresnie.getNazwa(), czeresnie.getIloscS().getJednostka(), czeresnie.getLimitOstrzezenie(), czeresnie.getLimitKrytyczny());
+        List<Skladnik> listaTest = lodowka.zwrocListeSkladnikow();
+        Assert.assertEquals("lista powinna zawierac jeden skladnik", 1, listaTest.size());
+        Assert.assertTrue("skladnik czeresnie jest na liscie", listaTest.contains(czeresnie));
+        Skladnik wisnie = new Skladnik("czeresnie", new IloscSkladnika(0.0, Jednostka.SZTUKA), 100, 50);
+        lodowka.dodajSkladnik(wisnie.getNazwa(), wisnie.getIloscS().getJednostka(), wisnie.getLimitOstrzezenie(), wisnie.getLimitKrytyczny());
+        List<Skladnik> listaTest2 = lodowka.zwrocListeSkladnikow();
+        Assert.assertTrue("lista zawiera czeresnie", listaTest2.contains(czeresnie));
+        Assert.assertFalse("lista nie zawiera wisnie", listaTest2.contains(wisnie));
+
+    }
 
 }
