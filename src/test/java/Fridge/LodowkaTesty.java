@@ -46,10 +46,8 @@ public class LodowkaTesty {
         lodowka.dodajSkladnik(pizdrykiWMasle2.getNazwa(), pizdrykiWMasle2.getIloscS().getJednostka(), pizdrykiWMasle2.getLimitOstrzezenie(), pizdrykiWMasle2.getLimitKrytyczny());
         List<Skladnik> listaDruga = lodowka.zwrocListeSkladnikow();
         Assert.assertEquals("lista powinna zawierac skladnik", 1, listaDruga.size());
-        Assert.assertTrue("lista powinna nie zawierac drugiego składnika", listaDruga.contains(pizdrykiWMasle2));
-
+        Assert.assertFalse("lista powinna nie zawierac drugiego składnika", listaDruga.contains(pizdrykiWMasle2));
 
     }
-
 
 }
